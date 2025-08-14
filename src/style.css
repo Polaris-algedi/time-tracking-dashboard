@@ -36,10 +36,15 @@
   --spacing-1: 1.125rem; /* 18px */
   --spacing-2: 1.25rem; /* 20px */
   --spacing-3: 1.5rem; /* 24px */
+  --spacing-4: 2rem; /* 32px */
 
   /* Design widths */
   --mobile-design-width: 23.438rem; /* 375px */
   --laptop-design-width: 58rem; /* 928px */
+
+  /* Profile picture dimensions for mobile */
+  --profile-picture-width-mobile: 4.375rem; /* 70px */
+  --profile-picture-height-mobile: 4.375rem; /* 70px */
 
   /* Borders */
   --border-radius: 0.5rem; /* 8px */
@@ -80,4 +85,27 @@ h1 {
 
 header {
   margin: var(--spacing-3);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  /* gap: var(--spacing-1); */
+  background-color: var(--purple-600);
+  padding: var(--spacing-4);
+  border-radius: var(--border-radius);
+}
+
+.user img {
+  width: var(--profile-picture-width-mobile);
+  height: var(--profile-picture-height-mobile);
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-right: var(--spacing-1);
+}
+
+.timeframe-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-1);
 }
