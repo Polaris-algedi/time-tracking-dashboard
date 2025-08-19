@@ -38,7 +38,8 @@
   --spacing-1: 1rem; /* 16px */
   --spacing-2: 1.25rem; /* 20px */
   --spacing-3: 1.5rem; /* 24px */
-  --spacing-4: 2rem; /* 32px */
+  --spacing-4: 1.75rem; /* 28px */
+  --spacing-5: 2rem; /* 32px */
 
   /* Design widths */
   --mobile-design-width: 23.438rem; /* 375px */
@@ -96,7 +97,7 @@ header {
   align-items: center;
   gap: var(--spacing-1);
   background-color: var(--purple-600);
-  padding: var(--spacing-4);
+  padding: var(--spacing-5);
   border-radius: var(--border-radius);
 }
 
@@ -138,5 +139,20 @@ a {
 }
 
 .activity-card {
-  margin-block-start: var(--spacing-3);
+  margin: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-3);
+  background-color: var(--navy-900);
+  border-radius: var(--border-radius);
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
