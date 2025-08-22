@@ -69,8 +69,6 @@
   --border-radius: 1rem; /* 16px */
   --border-radius-large: 2rem; /* 32px */
 
-  /* Shadow */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -89,7 +87,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-
 h1 {
   position: absolute;
   width: 1px;
@@ -155,6 +152,14 @@ a {
   color: var(--purple-500);
 }
 
+a:hover {
+  color: white;
+}
+
+.active {
+  color: white;
+}
+
 .activity-card {
   position: relative;
   margin: var(--spacing-3);
@@ -163,6 +168,11 @@ a {
   );
   background-color: var(--navy-900);
   border-radius: var(--border-radius);
+}
+
+.activity-card:hover {
+  background-color: var(--purple-500);
+  cursor: pointer;
 }
 
 .activity-header,
@@ -248,7 +258,7 @@ a {
     align-items: center;
     justify-content: center;
     gap: calc(var(--spacing-4) + 0.125rem);
-    max-width: 69.625rem;
+    /* max-width: 69.625rem; */
   }
 
   header {
@@ -287,6 +297,9 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: calc(var(--spacing-4) + 0.125rem);
+    max-width: calc(
+      var(--card-width-desktop) * 3 + (var(--spacing-4) + 0.125rem) * 2
+    );
   }
 
   .activity-card {
