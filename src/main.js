@@ -15,19 +15,23 @@ async function getData(url) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  /* Fetch data from JSON file */
   const data = await getData("data.json");
-  console.log(data);
-  updateActivityTime(data);
+
+  /* Sets the default timeframe to weekly */
+  document
+    .querySelector(".timeframe-list")
+    .children[1].firstElementChild.classList.add("active");
+  updateActivityTime(data, "weekly");
 
   /**
    * Updates the UI with the given data
    * @param {Array<{current: number, previous: number}>} data - The data to update the UI with
    */
-  function updateActivityTime(data) {
+  function updateActivityTime(data, selectedTimeframe) {
     const activityTimeList = document.querySelectorAll(".activity-time");
-    console.log(activityTimeList);
 
-    switch ("weekly") {
+    switch (selectedTimeframe) {
       case "daily":
         const dailyData = data.map((item) => ({
           current: item.timeframes.daily.current,
@@ -84,17 +88,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  document.querySelector(".timeframe-list").addEventListener("click", (e) => {
-    const timeframe = e.target;
-    console.log(timeframe);
+  function selectTimeframe() {
+    document.querySelector(".timeframe-list").addEventListener("click", (e) => {
+      e.preventDefault();
+      const timeframe = e.target;
+      const selectedTimeframe = timeframe.textContent.toLowerCase();
+      if (timeframe.tagName === "A") {
+        const timeframeList = document.querySelectorAll(".timeframe-list li a");
+        timeframeList.forEach((item) => {
+          item.classList.remove("active");
+        });
+        timeframe.classList.add("active");
+        updateActivityTime(data, selectedTimeframe);
+      }
+    });
+  }
 
-    if (timeframe.tagName === "A") {
-      const timeframeList = document.querySelectorAll(".timeframe-list li a");
-      timeframeList.forEach((item) => {
-        item.classList.remove("active");
-      });
-      timeframe.classList.add("active");
-      updateActivityTime(data);
-    }
-  });
+  selectTimeframe();
 });
